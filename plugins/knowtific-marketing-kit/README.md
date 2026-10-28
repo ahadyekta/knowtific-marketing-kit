@@ -1,0 +1,3 @@
+# knowtific-marketing-kit
+
+Marketing toolkit for small-business client projects. Ask any marketing question and the `marketing-coach` skill answers from proven frameworks plus the project's own `marketing/` folder. Commands: `/knowtific-marketing-kit:init` sets up that folder, `/knowtific-marketing-kit:position` finds positioning and writes the positioning statement, `/knowtific-marketing-kit:ads-math` works out affordable cost per lead and test budgets, and `/knowtific-marketing-kit:lp-review` scores a landing page in the codebase and lists fixes. Includes Australian compliance notes (Spam Act, SMS sender IDs, AHPRA, consumer law). See the repository README for installation.

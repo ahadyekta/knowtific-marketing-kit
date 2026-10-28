@@ -1,0 +1,20 @@
+{
+  "name": "knowtific-marketing-kit",
+  "displayName": "Knowtific Marketing Kit",
+  "version": "0.1.1",
+  "description": "Marketing coach, project setup, positioning, ads maths and landing page review for small-business client projects.",
+  "author": {
+    "name": "Knowtific",
+    "url": "https://knowtific.com.au"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "marketing",
+    "landing-pages",
+    "ads",
+    "positioning",
+    "australia"
+  ],
+  "homepage": "https://knowtific.com.au",
+  "repository": "https://github.com/knowtific/knowtific-marketing-kit"
+}

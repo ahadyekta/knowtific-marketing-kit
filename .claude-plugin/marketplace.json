@@ -1,0 +1,23 @@
+{
+  "name": "knowtific",
+  "description": "Knowtific's marketing toolkit for client projects: positioning, ad maths, landing page reviews and a marketing coach.",
+  "owner": {
+    "name": "Knowtific",
+    "url": "https://knowtific.com.au"
+  },
+  "plugins": [
+    {
+      "name": "knowtific-marketing-kit",
+      "source": "./plugins/knowtific-marketing-kit",
+      "description": "Marketing coach, project setup, positioning, ads maths and landing page review for small-business client projects.",
+      "category": "marketing",
+      "tags": [
+        "marketing",
+        "landing-pages",
+        "ads",
+        "positioning",
+        "australia"
+      ]
+    }
+  ]
+}
