@@ -6,17 +6,29 @@ a testing budget, a feasibility check from CPC and landing page conversion,
 and a verdict on current results.
 
 Percentages are whole numbers: --close-rate 25 means 25%.
+Close rate here means LEADS -> PAYING JOBS (the same as marketing/economics.md).
 """
 import argparse
 import json
 import sys
 
 
-def pct(value, name):
+def pct(value, name, allow_small=False):
+    """Convert a whole-number percentage to a fraction, catching decimals typed by mistake."""
     if value is None:
         return None
     if value < 0 or value > 100:
         sys.exit(f"error: --{name} must be between 0 and 100 (got {value})")
+    if 0 < value < 1:
+        if not allow_small:
+            sys.exit(
+                f"error: --{name} {value} looks like a decimal. Percentages are whole numbers: "
+                f"did you mean {value * 100:g} (i.e. {value * 100:g}%)?"
+            )
+        print(
+            f"note: treating --{name} {value} as {value}%. If you meant {value * 100:g}%, type {value * 100:g}.",
+            file=sys.stderr,
+        )
     return value / 100.0
 
 
@@ -28,12 +40,26 @@ def calculate(a):
     margin = pct(a.margin, "margin")
     close = pct(a.close_rate, "close-rate")
     share = pct(a.spend_share, "spend-share")
-    lp_cvr = pct(a.lp_cvr, "lp-cvr")
+    lp_cvr = pct(a.lp_cvr, "lp-cvr", allow_small=True)  # e-commerce pages can genuinely convert under 1%
 
     if a.job_value <= 0:
         sys.exit("error: --job-value must be positive")
-    if close == 0:
+    if not close:
         sys.exit("error: --close-rate must be above 0")
+    if not margin:
+        sys.exit("error: --margin must be above 0 (with no margin there is nothing to spend on ads)")
+    if not share:
+        sys.exit("error: --spend-share must be above 0")
+    if a.cpc is not None and a.cpc <= 0:
+        sys.exit("error: --cpc must be positive")
+    for nm, v in (("spend", a.spend), ("leads", a.leads), ("jobs", a.jobs), ("repeat-value", a.repeat_value)):
+        if v is not None and v < 0:
+            sys.exit(f"error: --{nm} can't be negative")
+    if a.jobs is not None and a.leads is not None and a.jobs > a.leads:
+        sys.exit(
+            f"error: --jobs ({a.jobs}) is more than --leads ({a.leads}). Count only jobs that came from these leads "
+            "(repeat or referral jobs belong in --repeat-value)."
+        )
 
     gross_profit = a.job_value * margin
     affordable_cpa = gross_profit * share
@@ -121,7 +147,7 @@ def calculate(a):
             verdict = "Cost per job is above target but still profitable. Improve close rate or CPL before scaling."
         elif actual_cpl <= affordable_cpl:
             status = "scale"
-            verdict = "On or under target CPL. Increase budget gradually (about 20-30% every few days)."
+            verdict = "On or under target CPL. Increase budget gradually (common practice: about 20-30% every few days)."
         elif actual_cpl <= breakeven_cpl:
             status = "keep_testing"
             verdict = "Above target but still profitable. Keep testing new creative and improve the landing page."
@@ -185,7 +211,8 @@ def print_text(r):
         c = r["current"]
         print()
         print("CURRENT RESULTS")
-        print(f"  Spend ${c['spend']:,.2f} | Leads {c['leads']} | Jobs {c['jobs']}")
+        jobs = c["jobs"] if c["jobs"] is not None else "not given"
+        print(f"  Spend ${c['spend']:,.2f} | Leads {c['leads']} | Jobs {jobs}")
         if c["actual_cpl"] is not None:
             print(f"  Actual CPL:                   ${c['actual_cpl']:,.2f}")
         if c["actual_cost_per_customer"] is not None:

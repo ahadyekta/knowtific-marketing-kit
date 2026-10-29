@@ -1,8 +1,8 @@
 {
   "name": "knowtific-marketing-kit",
   "displayName": "Knowtific Marketing Kit",
-  "version": "0.1.1",
-  "description": "Marketing coach, project setup, positioning, ads maths and landing page review for small-business client projects.",
+  "version": "0.2.1",
+  "description": "A complete marketing toolkit for client projects: marketing coach, audits, positioning, rebrands, design briefs, content ideas and scripts, social plans, campaigns, creators, ads, funnels, landing page reviews, email/SMS, sales support, outbound, SEO, partnerships, crisis response and reporting, with Australian compliance built in.",
   "author": {
     "name": "Knowtific",
     "url": "https://knowtific.com.au"
@@ -10,9 +10,15 @@
   "license": "UNLICENSED",
   "keywords": [
     "marketing",
-    "landing-pages",
+    "branding",
+    "rebrand",
+    "content",
+    "social-media",
     "ads",
-    "positioning",
+    "funnels",
+    "landing-pages",
+    "seo",
+    "email",
     "australia"
   ],
   "homepage": "https://knowtific.com.au",

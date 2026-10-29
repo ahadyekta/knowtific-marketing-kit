@@ -1,35 +1,36 @@
 ---
 name: lp-review
-description: Reviews a landing page or service page in this codebase (Next.js/React or static HTML) for conversion: message, structure, proof, CTA, forms, thank-you page, tracking, speed, mobile and Australian compliance, and returns a scored report with prioritised fixes. Use when the user builds or edits a landing page, asks "check this page", or before launching ads to a page.
-argument-hint: "[route or file path, optional]"
+description: Reviews a landing page, service page, product page, lead magnet page or booking flow in this codebase (Next.js/React or HTML), or at a live URL, for conversion: page type and structure, message match, proof, CTAs, soft CTAs, forms, thank-you and "prepare for your call" pages, tracking, speed, mobile and Australian compliance, and returns a scored report with prioritised file/line fixes and rewrites. Use when the user builds or edits a page, asks "check this page", or before sending ads to a page.
+argument-hint: "[route, file path or URL, optional]"
 ---
 
 # Landing page review
 
 ## 1. Find the page
-- If the user gave a route or file (`$ARGUMENTS`), use it.
-- Otherwise find likely landing pages: in Next.js look under `app/**/page.tsx|jsx` or `pages/**`; otherwise `*.html`. Prefer routes named like `lp`, `landing`, `quote`, `book`, or service names. If several match, list them and ask which one.
-- Read the page file and every component it renders (follow imports), so you review the actual copy and markup, not just the shell.
+- If the user gave a route, file or URL (`$ARGUMENTS`), use it.
+- Otherwise find likely landing pages: in Next.js look under `app/**/page.tsx|jsx` or `pages/**`; otherwise `*.html`. Prefer routes named like `lp`, `landing`, `quote`, `book`, `thank-you`, or service names. If several match, list them and ask which.
+- Read the page and every component it renders (follow imports). Also find the thank-you/success route or state and any booking confirmation page.
 
 ## 2. Load context
-- `marketing/brand.md` (positioning, proof, objections, compliance) and `marketing/funnel.md` (where traffic comes from) if they exist.
-- If the user said which ad or keyword sends traffic here, keep that text handy for the message-match check.
+- `marketing/brand.md` (positioning, proof, compliance), `insights.md` (objections), `offer.md`, `funnel.md` (traffic source).
+- If the user said which ad, keyword or post sends traffic here, keep it for the message-match check.
 
 ## 3. Review
-Delegate the detailed audit to the `landing-page-reviewer` agent when available, passing the file paths and any context. Otherwise work through `references/checklist.md` yourself. Use the checklist either way as the scoring rubric.
+Delegate the detailed audit to the `landing-page-reviewer` agent, passing file paths (or URL) and context. **Always include these two rubric paths in the agent's prompt exactly as written here** (agents may not resolve plugin paths themselves): `${CLAUDE_PLUGIN_ROOT}/skills/lp-review/references/checklist.md` and `${CLAUDE_PLUGIN_ROOT}/skills/marketing-coach/references/funnels-and-offers.md`. Otherwise work through `${CLAUDE_PLUGIN_ROOT}/skills/lp-review/references/checklist.md` yourself. The checklist is the scoring rubric either way.
 
-If a dev server is running or the user gives a URL, you may also check the rendered page (mobile width, load, form behaviour). Otherwise review from code and say so.
+If a dev server is running, a URL is given, or a browser tool (Playwright MCP, Claude in Chrome) is available, also check the rendered page at mobile width (375px) and desktop: load, layout, sticky CTA, form behaviour and success state. If the PageSpeed Insights API is available, get mobile scores. Otherwise review from code and say what couldn't be checked.
 
 ## 4. Report
-Use this format:
-
 ```
 ## Landing page review: <route>
+Page type: <service / PDP / listicle / luxury / lead magnet / booking>
 Score: <total>/100  (Message __/25 · Structure __/20 · Proof __/15 · Conversion __/20 · Technical __/15 · Compliance __/5)
+
+### Red flags
+- (if any)
 
 ### Fix first (highest impact)
 1. <issue> → <specific fix> (file:line)
-2. ...
 
 ### Then
 - ...
@@ -38,15 +39,19 @@ Score: <total>/100  (Message __/25 · Structure __/20 · Proof __/15 · Conversi
 - ...
 
 ### Rewrites
-- Headline options (3): ...
-- CTA button text options (3): ...
+- Headline options (3): direct response / evidence-led / story
+- CTA button text (3)
+- Missing section copy (if any)
+
+### Tests to run next
+- ...
+
+### Not checked
+- ...
 ```
+Rules: concrete fix and file/line for every issue; rank by expected impact on leads; rewrites use real positioning and proof (placeholders if missing); compliance flagged clearly.
 
-Rules for the report:
-- Every issue gets a concrete fix and a file/line reference where possible.
-- Rank by expected impact on conversion, not by checklist order.
-- Rewrites must use the client's positioning and real proof from `brand.md`. Never invent reviews, numbers or claims.
-- Flag compliance problems clearly, even if the score is otherwise high.
+Save a copy to `marketing/audits/lp-<route>-YYYY-MM-DD.md`.
 
-## 5. Offer next steps
-Offer to apply the top fixes directly in the code. Make changes only after the user agrees.
+## 5. Next steps
+Offer to apply the top fixes in the code (only after the user agrees), to write the full page with `copy`, or to model the impact with `funnel_math.py`.

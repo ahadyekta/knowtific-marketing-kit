@@ -1,6 +1,6 @@
 {
   "name": "knowtific",
-  "description": "Knowtific's marketing toolkit for client projects: positioning, ad maths, landing page reviews and a marketing coach.",
+  "description": "Knowtific's marketing toolkit for client projects: coach, audits, branding, content, campaigns, ads, funnels, SEO, email and reporting.",
   "owner": {
     "name": "Knowtific",
     "url": "https://knowtific.com.au"
@@ -9,13 +9,15 @@
     {
       "name": "knowtific-marketing-kit",
       "source": "./plugins/knowtific-marketing-kit",
-      "description": "Marketing coach, project setup, positioning, ads maths and landing page review for small-business client projects.",
+      "description": "A complete marketing toolkit for client projects: coach, audits, positioning, rebrands, design briefs, content, social, campaigns, creators, ads, funnels, landing pages, email/SMS, sales, outbound, SEO, partnerships, crisis and reporting.",
       "category": "marketing",
       "tags": [
         "marketing",
-        "landing-pages",
+        "branding",
+        "content",
         "ads",
-        "positioning",
+        "funnels",
+        "seo",
         "australia"
       ]
     }

@@ -1,59 +1,59 @@
 # Landing page checklist
 
-Score each item 0 (missing), half (partial) or full points. Section totals add to 100.
+Score each item 0 (missing), half (partial) or full points. Section totals add to 100. First identify the **page type**: service page, product page (PDP), listicle, luxury, lead magnet/squeeze page, or booking page. Judge structure against that type's expected sections (see `../../marketing-coach/references/funnels-and-offers.md`, section 5).
 
 ## Message (25)
 | Points | Check |
 |---|---|
-| 8 | Headline states the specific outcome for a specific customer, not a generic claim ("quality", "reliable", "trusted") |
-| 5 | Subheadline adds the key difference or proof (from the positioning statement) |
-| 5 | Message match: headline echoes the ad or keyword sending traffic (same offer, same words) |
-| 4 | Benefits written from the customer's view ("you get…"), not features only |
-| 3 | Copy is scannable: short paragraphs, clear subheadings, no wall of text |
+| 7 | Headline states a specific outcome for a specific customer, not a generic claim ("quality", "reliable", "trusted") |
+| 4 | Subheadline adds the key difference or proof (from the positioning statement) |
+| 5 | Message match: headline and offer echo the ad, keyword or post sending traffic |
+| 4 | Benefits written from the customer's view ("you get…"), features as proof |
+| 2 | AI-legible: clearly says what, for whom, where (helps AI answers and search) |
+| 3 | Scannable: short paragraphs, clear subheadings, no wall of text |
 
 ## Structure (20)
-Expected order for a service page (adapt for listicle or premium pages):
-hero → real results → benefits → how it works → what's included → proof → team → reviews → FAQ/objections → final CTA.
-
 | Points | Check |
 |---|---|
 | 6 | Above the fold on mobile: headline, one-line benefit, primary CTA, a trust signal |
-| 4 | "How it works" in 3–4 simple steps |
-| 4 | FAQ answers the real objections (price, timing, mess, trust, guarantees) |
-| 3 | One page, one goal. Navigation and outbound links minimised |
+| 4 | Sections follow the right structure for the page type (e.g. service page: results → benefits → how it works → included → proof → team → reviews → FAQ → final CTA) |
+| 4 | FAQ answers the real objections (price, timing, mess, trust, guarantees, fit) |
+| 3 | One page, one goal: navigation and outbound links minimised |
 | 3 | Final CTA section near the bottom |
 
 ## Proof (15)
 | Points | Check |
 |---|---|
 | 5 | Real reviews with names/suburbs, or embedded Google rating and count |
-| 4 | Real photos of jobs/team/premises (not stock) |
-| 3 | Specific numbers that can be proven (jobs done, years, response time) |
+| 4 | Real photos/videos of jobs, team, premises or product in use (not stock) |
+| 3 | Specific provable numbers (jobs done, years, response time, results) or a comparison chart |
 | 3 | Credentials: licence/registration numbers, insurance, memberships, warranties |
 
 ## Conversion (20)
 | Points | Check |
 |---|---|
-| 5 | Primary CTA is specific ("Get my free quote") and repeated (hero, middle, end) |
-| 4 | Click-to-call phone number on mobile (`tel:` link) |
-| 4 | Form is short (name, phone, email, suburb, one need field); labels visible; mobile-friendly input types |
-| 3 | Clear next step and response time next to the form ("We call within 1 hour") |
-| 4 | Thank-you page exists with what happens next, who'll call, and proof/links (not just "thanks") |
+| 4 | Primary CTA specific ("Get my free quote") and repeated (hero, middle, end) |
+| 3 | Click-to-call phone number on mobile (`tel:` link) and/or sticky mobile CTA bar |
+| 4 | Form is short (name, phone, email, suburb, one need field); visible labels; mobile-friendly input types; clear success state |
+| 2 | Soft CTA for not-ready visitors (lead magnet, price guide, quiz) where it fits |
+| 2 | Clear next step and response-time promise next to the form ("We call within 1 hour") |
+| 3 | Thank-you page exists with what happens next, who'll call (ideally a short video), proof links, optional booking upsell |
+| 2 | If calls are booked: a confirmation / "prepare for your call" page or email (who they'll meet, agenda) |
 
 ## Technical (15)
 | Points | Check |
 |---|---|
-| 4 | Conversion tracking fires on form submit and call click (GA4 event, Meta pixel/CAPI, Google Ads conversion). Look for the scripts/events in code |
-| 3 | Fast: optimised images (`next/image` or sized/compressed), no heavy unused scripts, fonts handled efficiently |
+| 4 | Conversion tracking fires on form submit and call click (GA4 event, Meta pixel/Conversions API, Google Ads conversion). Look for the code |
+| 3 | Fast: optimised images (`next/image` or sized/compressed), no heavy unused scripts, efficient fonts |
 | 3 | Mobile layout works (responsive classes, tap targets, no horizontal scroll) |
-| 2 | Metadata: title, description, Open Graph image; LocalBusiness schema where relevant |
-| 3 | Form submission is handled (API route/server action/service), with validation, spam protection, and leads reaching the CRM or inbox |
+| 2 | Metadata: title, description, Open Graph image; LocalBusiness/Service schema where relevant |
+| 3 | Form submission handled (API route/server action/service) with validation, spam protection, and leads reaching the CRM or inbox, ideally triggering an instant acknowledgement |
 
 ## Compliance (5)
 | Points | Check |
 |---|---|
-| 2 | Claims are true and provable; prices show the full amount or explain extras (ACL) |
-| 2 | Registered health services: no clinical testimonials or outcome guarantees (AHPRA) |
+| 2 | Claims true and provable; if any part of a price is shown, the single total price is shown at least as prominently; urgency genuine (ACL) |
+| 2 | Registered health services: no clinical testimonials or outcome guarantees (AHPRA); therapeutic goods follow TGA rules |
 | 1 | Privacy policy linked near the form; licence numbers shown where the trade requires it |
 
 ## Instant red flags (call out regardless of score)
@@ -62,3 +62,7 @@ hero → real results → benefits → how it works → what's included → proo
 - Fake or unattributed testimonials, or invented statistics
 - Clinical testimonials on a registered health practitioner's page
 - Tracking missing on a page that will receive paid traffic
+- Page sends paid traffic to the homepage instead of a matching page
+
+## Test ideas to suggest
+Long vs short; with vs without video; light vs dark; three copy angles (direct response, evidence-led, story); offer variants; lead magnet vs direct quote.
